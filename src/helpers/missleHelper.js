@@ -4,13 +4,14 @@ export const missleHelper = (key) => {
             x: 420,
             y: 230
         },
-        velocity: -1,
+        velocityX: -1,
+        velocityY: -1,
         hit: false,
     }
 
     if(key === 'd') {
-        missle.pos.x = 440;
-        missle.velocity = 1;
+        missle.pos.x = 555;
+        missle.velocityX = 1;
     }
 
     return missle;

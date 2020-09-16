@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import './Stage.css'
 
@@ -7,6 +7,7 @@ import Plane from '../Enemies/Plane/Plane';
 
 import useInterval from '../../hooks/useInterval';
 import Missle from '../Missle/Missle';
+import Explosion from '../Explosion/Explosion';
 import { missleHelper } from '../../helpers/missleHelper';
 
 const Stage = ({planes}) => {
@@ -24,11 +25,9 @@ const Stage = ({planes}) => {
             return {...p, pos: {x: newX, y: p.pos.y}, velocity: vel}
         });
         const newMissles = missles.map(m => {
-            const vel = m.velocity;
-            const newPos = {x: m.pos.x + vel, y: m.pos.y + vel}
-
+            const newPos = {x: m.pos.x + m.velocityX, y: m.pos.y + m.velocityY}
             return {...m, pos: newPos};
-        }).filter(m => m.pos.y > -30);
+        }).filter(m => m.pos.y > -30 || m.hit === true);
         setStatedPlanes(newPlanes);
         setMissles(newMissles);
     }, 16);
@@ -46,6 +45,7 @@ const Stage = ({planes}) => {
         <div className="stage" onKeyPress={handleKeyPress} tabIndex={"-1"}>
             { missles && missles.map((m, i) => (<Missle key={i} missle={m}/>))}
             <Battleship />
+            <Explosion />
            { statedPlanes && statedPlanes.map(((p, i) => (<Plane key={i} plane={p} />)))}
         </div>
     )
