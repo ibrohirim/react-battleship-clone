@@ -14,7 +14,11 @@ const buildPlane = () => {
         },
         hit: false,
         type: 'big',
-        velocity: 1
+        velocity: 1,
+        size: {
+            w: 50,
+            h: 18
+        }
     }
 
     let rand = Math.random();
@@ -27,8 +31,10 @@ const buildPlane = () => {
 
     if(rand  < 6 ) {
         plane.type = 'little';
+        plane.size = {w: 18, h: 14}
     } else if (rand > 5 && rand < 10) {
         plane.type = 'medium';
+        plane.size = {w: 34, h:18}
     } else {
         plane.type = 'big';
     }
