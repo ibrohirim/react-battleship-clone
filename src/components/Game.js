@@ -6,7 +6,7 @@ import { planeHelper } from '../helpers/planeHelper';
 const Game = () => {
 
     return (
-        <Stage planes={planeHelper(3)}/>
+        <Stage planes={planeHelper(6)}/>
     )
 }
 

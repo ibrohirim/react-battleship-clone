@@ -1,0 +1,7 @@
+.score-wrap {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: gray;
+}
